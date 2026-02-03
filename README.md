@@ -22,6 +22,8 @@
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 18px;
       --radius2: 26px;
+
+      --wa: #25D366; /* WhatsApp green */
     }
 
     *{ box-sizing:border-box; }
@@ -49,28 +51,52 @@
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+      padding:12px 0; /* menor e mais limpo */
       gap:16px;
     }
+
+    /* HEADER FIX: logo maior + alinhamento perfeito */
     .brand{
-      display:flex; align-items:center; gap:14px;
-      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 220px;
     }
-    .brand img{ display:block; }
+    .brand img{
+      display:block;
+      height:52px; /* maior que antes */
+      width:auto;
+    }
+
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
     .nav{
-      display:flex; gap:14px; align-items:center;
+      display:flex;
+      gap:16px;
+      align-items:center;
       color:var(--muted);
-      font-size:14px;
+      font-size:15px;
     }
     .nav a{
-      padding:8px 10px; border-radius:999px;
+      padding:8px 10px;
+      border-radius:999px;
       border:1px solid transparent;
     }
     .nav a:hover{
       border-color: var(--line);
       background: rgba(216,179,106,.06);
       color: var(--text);
+    }
+
+    /* Mobile: esconde menu e mantém CTA */
+    @media (max-width: 760px){
+      .brand{ min-width: unset; }
+      .brand img{ height:46px; }
+      .nav{ display:none; }
     }
 
     /* Buttons */
@@ -284,38 +310,38 @@
     }
     .toast strong{ color: var(--gold); }
 
-    /* Floating WhatsApp */
+    /* Floating WhatsApp (verde + ícone por imagem) */
     .wa-float{
       position: fixed;
       right: 18px;
       bottom: 18px;
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       z-index: 120;
-      background: linear-gradient(135deg, rgba(216,179,106,.95), rgba(180,138,59,.88));
-      border: 1px solid rgba(216,179,106,.55);
+      background: var(--wa);
+      border: 1px solid rgba(255,255,255,.18);
       box-shadow: 0 18px 55px rgba(0,0,0,.55);
       transition: transform .12s ease, filter .2s ease;
     }
     .wa-float:hover{ filter: brightness(1.03); transform: translateY(-1px); }
     .wa-float:active{ transform: translateY(1px); }
 
-    .wa-float svg{
-      width: 26px;
-      height: 26px;
-      fill: #1a1308;
+    .wa-float img{
+      width: 30px;
+      height: 30px;
+      display:block;
     }
 
     .wa-hint{
       position: fixed;
-      right: 84px;
-      bottom: 28px;
+      right: 92px;
+      bottom: 30px;
       padding: 10px 12px;
       border-radius: 14px;
-      border: 1px solid rgba(216,179,106,.22);
+      border: 1px solid rgba(255,255,255,.18);
       background: rgba(10,9,7,.92);
       color: rgba(243,239,230,.92);
       font-size: 12px;
@@ -344,11 +370,10 @@
           "
           sizes="(max-width: 520px) 160px, 220px"
           alt="Restaurante Tantra – Mongolian Grill"
-          style="height:48px; width:auto;"
         />
       </div>
 
-      <div style="display:flex; gap:12px; align-items:center;">
+      <div class="header-right">
         <nav class="nav" aria-label="Navegação">
           <a href="#como-funciona">Como funciona</a>
           <a href="#conteudo">Conteúdo</a>
@@ -550,7 +575,6 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <!-- LOGO TRANSPARENTE NO DIRETÓRIO RAIZ -->
         <img
           src="tantra-logo-transparent-400.webp"
           srcset="
@@ -577,12 +601,10 @@
 
   <div class="toast" id="toast"></div>
 
-  <!-- WhatsApp floating button -->
+  <!-- WhatsApp floating button (Ícone verde por imagem no ROOT) -->
   <div class="wa-hint">Fale com o Eric no WhatsApp</div>
   <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Eric">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.49-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26 0 1.33.98 2.62 1.12 2.8.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.56.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.82-1.28.22-.63.22-1.17.16-1.28-.06-.11-.25-.18-.52-.32zM16.02 3C9.39 3 4 8.39 4 15.02c0 2.31.66 4.47 1.81 6.3L4 29l7.87-1.75c1.75.95 3.75 1.49 5.94 1.49C24.61 28.74 30 23.35 30 16.72 30 10.09 22.65 3 16.02 3zm0 23.6c-2.01 0-3.88-.57-5.47-1.56l-.39-.24-4.67 1.04.99-4.55-.25-.4a10.5 10.5 0 0 1-1.66-5.68c0-5.83 4.74-10.57 10.57-10.57S26.59 9.38 26.59 15.21c0 5.83-4.74 10.57-10.57 10.57z"/>
-    </svg>
+    <img src="whatsapp-icon-64.png" alt="WhatsApp" />
   </a>
 
   <script>
@@ -625,13 +647,12 @@
       showToast("<strong>Enviado!</strong> Se os dados estiverem corretos, você receberá confirmação por WhatsApp.");
     });
 
-    // WhatsApp floating link (Eric): +55 11 99653-9632 => 5511996539632
+    // WhatsApp (Eric): +55 11 99653-9632 => 5511996539632
     const waNumber = "5511996539632";
     const defaultMsg =
       "Oi Eric! Tudo bem? Acabei de ver a landing da palestra gratuita (10h–11h30) para times de vendas. " +
       "Queria confirmar detalhes e disponibilidade de datas para levar meu time.";
-    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
-    document.getElementById("waFloat").href = waLink;
+    document.getElementById("waFloat").href = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
   </script>
 </body>
 </html>
