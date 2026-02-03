@@ -14,7 +14,6 @@
     :root{
       --bg: #0b0a08;
       --bg2:#12100c;
-      --card:#14110c;
       --text:#f3efe6;
       --muted:#c9c2b3;
       --gold:#d8b36a;
@@ -54,19 +53,11 @@
       gap:16px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:700; letter-spacing:.12em;
-      text-transform:uppercase;
+      display:flex; align-items:center; gap:14px;
+      font-weight:700;
     }
-    .brand-badge{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(216,179,106,.32), rgba(180,138,59,.10));
-      border:1px solid var(--line);
-      display:grid; place-items:center;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      font-weight:800;
-      color:var(--gold);
-    }
+    .brand img{ display:block; }
+
     .nav{
       display:flex; gap:14px; align-items:center;
       color:var(--muted);
@@ -342,12 +333,19 @@
   <!-- Topbar -->
   <div class="topbar">
     <div class="container topbar-inner">
-      <div class="brand" aria-label="Tantra">
-        <div class="brand-badge">T</div>
-        <div>
-          <div style="font-size:12px; color:var(--muted); letter-spacing:.18em;">TANTRA</div>
-          <div style="font-size:14px; font-weight:800; letter-spacing:.06em;">Palestra para Times de Vendas</div>
-        </div>
+      <div class="brand" aria-label="Restaurante Tantra">
+        <!-- LOGO NO DIRETÓRIO RAIZ -->
+        <img
+          src="tantra-logo-clean-400.webp"
+          srcset="
+            tantra-logo-clean-400.webp 400w,
+            tantra-logo-clean-800.webp 800w,
+            tantra-logo-clean-1200.webp 1200w
+          "
+          sizes="(max-width: 520px) 160px, 220px"
+          alt="Restaurante Tantra – Mongolian Grill"
+          style="height:48px; width:auto;"
+        />
       </div>
 
       <div style="display:flex; gap:12px; align-items:center;">
@@ -432,7 +430,6 @@
             </div>
             <div>
               <label for="email">E-mail corporativo</label>
-              <!-- Formspree precisa do campo email para reply -->
               <input id="email" name="email" type="email" placeholder="voce@empresa.com" required />
             </div>
           </div>
@@ -458,14 +455,11 @@
             <textarea id="observacoes" name="observacoes" placeholder="Ex.: queremos focar em retenção, indicação, pós-venda, etc."></textarea>
           </div>
 
-          <!-- Extras úteis -->
+          <!-- Extras -->
           <input type="hidden" id="utm_source" name="utm_source" value="">
           <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
           <input type="hidden" id="page_url" name="page_url" value="">
           <input type="hidden" name="_subject" value="Nova inscrição - Palestra Tantra (Time de Vendas)">
-          <!-- Opcional: redirecionar para uma página de obrigado (se você criar /thanks.html)
-          <input type="hidden" name="_redirect" value="https://SEUUSUARIO.github.io/SEUREPO/thanks.html">
-          -->
 
           <button class="btn btn-primary" type="submit">Enviar inscrição</button>
 
@@ -556,10 +550,19 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-          <div class="brand-badge" style="width:34px; height:34px;">T</div>
-          <div style="font-weight:900; letter-spacing:.12em;">TANTRA</div>
-        </div>
+        <!-- LOGO TRANSPARENTE NO DIRETÓRIO RAIZ -->
+        <img
+          src="tantra-logo-transparent-400.webp"
+          srcset="
+            tantra-logo-transparent-400.webp 400w,
+            tantra-logo-transparent-800.webp 800w,
+            tantra-logo-transparent-1200.webp 1200w
+          "
+          sizes="160px"
+          alt="Tantra Restaurante"
+          style="height:40px; width:auto; opacity:.95; margin-bottom:8px;"
+        />
+
         <div class="small muted">
           © <span id="year"></span> • Página de inscrição (palestra gratuita)
         </div>
@@ -577,17 +580,14 @@
   <!-- WhatsApp floating button -->
   <div class="wa-hint">Fale com o Eric no WhatsApp</div>
   <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Eric">
-    <!-- WhatsApp icon (svg) -->
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M19.11 17.53c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.33-.79-.71-1.33-1.58-1.49-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26 0 1.33.98 2.62 1.12 2.8.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.56.58.66.21 1.26.18 1.74.11.53-.08 1.6-.65 1.82-1.28.22-.63.22-1.17.16-1.28-.06-.11-.25-.18-.52-.32zM16.02 3C9.39 3 4 8.39 4 15.02c0 2.31.66 4.47 1.81 6.3L4 29l7.87-1.75c1.75.95 3.75 1.49 5.94 1.49C24.61 28.74 30 23.35 30 16.72 30 10.09 22.65 3 16.02 3zm0 23.6c-2.01 0-3.88-.57-5.47-1.56l-.39-.24-4.67 1.04.99-4.55-.25-.4a10.5 10.5 0 0 1-1.66-5.68c0-5.83 4.74-10.57 10.57-10.57S26.59 9.38 26.59 15.21c0 5.83-4.74 10.57-10.57 10.57z"/>
     </svg>
   </a>
 
   <script>
-    // Ano automático
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Captura UTM + URL da página
     const params = new URLSearchParams(window.location.search);
     document.getElementById("utm_source").value = params.get("utm_source") || "";
     document.getElementById("utm_campaign").value = params.get("utm_campaign") || "";
@@ -604,7 +604,7 @@
       });
     });
 
-    // Mini máscara WhatsApp
+    // Máscara WhatsApp input
     const whats = document.getElementById("whats");
     whats.addEventListener("input", () => {
       let v = whats.value.replace(/\D/g, "").slice(0, 11);
@@ -625,17 +625,14 @@
       showToast("<strong>Enviado!</strong> Se os dados estiverem corretos, você receberá confirmação por WhatsApp.");
     });
 
-    // WhatsApp floating link (Eric)
-    // Número: +55 11 99653-9632 -> wa.me/5511996539632
+    // WhatsApp floating link (Eric): +55 11 99653-9632 => 5511996539632
     const waNumber = "5511996539632";
-
-    // Mensagem pré-preenchida (edite se quiser)
     const defaultMsg =
       "Oi Eric! Tudo bem? Acabei de ver a landing da palestra gratuita (10h–11h30) para times de vendas. " +
       "Queria confirmar detalhes e disponibilidade de datas para levar meu time.";
-
     const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
     document.getElementById("waFloat").href = waLink;
   </script>
 </body>
 </html>
+
