@@ -6,6 +6,13 @@
   <title>Palestra Gratuita para Times de Vendas | Tantra Restaurante</title>
   <meta name="description" content="Palestra gratuita (10h–11h30) para Diretores e Gerentes comerciais levarem seu time. Como criar uma experiência tão boa que o cliente não esquece, volta e indica." />
 
+  <!-- FAVICON (arquivos no ROOT) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="favicon-180.png">
+  <meta name="theme-color" content="#0b0a08">
+
   <meta property="og:title" content="Palestra Gratuita para Times de Vendas | Tantra" />
   <meta property="og:description" content="Como criar uma experiência tão boa que o cliente não esquece, volta e indica. 10h–11h30. Vagas limitadas." />
   <meta property="og:type" content="website" />
@@ -18,7 +25,7 @@
       --muted:#c9c2b3;
       --gold:#d8b36a;
       --gold2:#b48a3b;
-      --line: rgba(216,179,106,.22);
+      --line: rgba(216,179,106,.20);
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 18px;
       --radius2: 26px;
@@ -31,47 +38,56 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
       background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(216,179,106,.12), transparent 55%),
-        radial-gradient(900px 600px at 80% 30%, rgba(216,179,106,.10), transparent 60%),
+        radial-gradient(1200px 700px at 20% 0%, rgba(216,179,106,.10), transparent 56%),
+        radial-gradient(900px 700px at 80% 35%, rgba(216,179,106,.08), transparent 62%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       color:var(--text);
       line-height:1.45;
+      overflow-x:hidden;
     }
 
     a{ color:inherit; text-decoration:none; }
-    .container{ width:min(1120px, 92vw); margin:0 auto; }
+    .container{ width:min(1100px, 92vw); margin:0 auto; }
 
-    /* Topbar */
+    /* HEADER (mais bonito, sem “buracos”) */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,10,8,.72);
+      background: rgba(11,10,8,.78);
       border-bottom:1px solid var(--line);
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0;
-      gap:16px;
+      padding:14px 0;
+      gap:14px;
     }
+
     .brand{
-      display:flex; align-items:center;
+      display:flex;
+      align-items:center;
+      gap:12px;
       min-width: 220px;
     }
     .brand img{
       display:block;
-      height:52px;
+      height:54px;
       width:auto;
     }
-    .header-right{ display:flex; align-items:center; gap:14px; }
 
     .nav{
-      display:flex; gap:16px; align-items:center;
+      display:flex;
+      gap:10px;
+      align-items:center;
       color:var(--muted);
       font-size:15px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
     .nav a{
-      padding:8px 10px; border-radius:999px;
+      padding:8px 12px;
+      border-radius:999px;
       border:1px solid transparent;
+      transition:.2s;
     }
     .nav a:hover{
       border-color: var(--line);
@@ -79,13 +95,12 @@
       color: var(--text);
     }
 
-    @media (max-width: 760px){
-      .brand{ min-width: unset; }
-      .brand img{ height:46px; }
+    @media (max-width: 860px){
       .nav{ display:none; }
+      .brand{ min-width: unset; }
+      .brand img{ height:48px; }
     }
 
-    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
@@ -94,7 +109,7 @@
       border:1px solid var(--line);
       background: rgba(216,179,106,.08);
       color: var(--text);
-      font-weight:650;
+      font-weight:700;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
       cursor:pointer;
       user-select:none;
@@ -107,26 +122,30 @@
       background: linear-gradient(135deg, rgba(216,179,106,.95), rgba(180,138,59,.88));
       border-color: rgba(216,179,106,.55);
       color: #1a1308;
-      box-shadow: 0 18px 45px rgba(216,179,106,.18);
+      box-shadow: 0 18px 45px rgba(216,179,106,.16);
     }
 
-    /* Layout blocks */
-    .hero{ padding:56px 0 28px; }
+    /* HERO (centralizado + form logo no topo) */
+    .hero{ padding: 34px 0 10px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
       align-items:stretch;
     }
-    @media (max-width: 920px){ .hero-grid{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){
+      .hero{ padding-top: 22px; }
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
 
     .panel{
-      background: linear-gradient(180deg, rgba(20,17,12,.86), rgba(20,17,12,.68));
+      background: linear-gradient(180deg, rgba(20,17,12,.86), rgba(20,17,12,.64));
       border:1px solid var(--line);
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
     }
-    .hero-left{ padding:28px; }
+
+    .hero-left{ padding:26px; }
     .kicker{
       display:inline-flex; gap:10px; align-items:center;
       padding:8px 12px;
@@ -141,30 +160,34 @@
       background: var(--gold);
       box-shadow: 0 0 18px rgba(216,179,106,.35);
     }
+
     h1{
-      margin:14px 0 12px;
+      margin:14px 0 10px;
       font-size: clamp(28px, 3.4vw, 44px);
       line-height:1.05;
       letter-spacing:-.02em;
     }
+
     .sub{
       margin:0;
       color: var(--muted);
       font-size: 16px;
-      max-width: 62ch;
+      max-width: 64ch;
     }
+
     .hero-actions{
       display:flex; gap:12px; flex-wrap:wrap;
-      margin-top:18px;
+      margin-top:16px;
     }
 
     .bullets{
-      margin-top:18px;
+      margin-top:16px;
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:10px;
     }
-    @media (max-width: 560px){ .bullets{ grid-template-columns:1fr; } }
+    @media (max-width: 520px){ .bullets{ grid-template-columns:1fr; } }
+
     .bullet{
       display:flex; gap:10px; align-items:flex-start;
       padding:12px;
@@ -185,10 +208,10 @@
       font-weight:900;
     }
 
-    /* Form */
     .hero-right{ padding:22px; }
-    .form-title{ font-weight:800; font-size:18px; margin:0 0 6px; }
+    .form-title{ font-weight:900; font-size:18px; margin:0 0 6px; }
     .form-sub{ margin:0 0 14px; color:var(--muted); font-size:14px; }
+
     form{ display:grid; gap:10px; }
     .row2{ display:grid; gap:10px; grid-template-columns:1fr 1fr; }
     @media (max-width: 520px){ .row2{ grid-template-columns:1fr; } }
@@ -207,7 +230,7 @@
       border-color: rgba(216,179,106,.45);
       box-shadow: 0 0 0 4px rgba(216,179,106,.10);
     }
-    textarea{ min-height: 90px; resize: vertical; }
+    textarea{ min-height: 84px; resize: vertical; }
 
     .fineprint{
       margin:10px 0 0;
@@ -215,8 +238,8 @@
       font-size:12px;
     }
 
-    /* Sections */
-    section{ padding: 22px 0; }
+    /* SEÇÕES (sem “buracos”) */
+    section{ padding: 18px 0; }
     .section-title{
       margin:0 0 10px;
       font-size: 20px;
@@ -235,7 +258,7 @@
       border-radius: var(--radius2);
       border:1px solid var(--line);
       background: rgba(20,17,12,.55);
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      box-shadow: 0 14px 40px rgba(0,0,0,.32);
     }
     .card h3{ margin:0 0 8px; font-size:16px; }
     .card p{ margin:0; color:var(--muted); font-size:14px; }
@@ -257,10 +280,9 @@
       font-size: 13px;
       margin: 0 8px 8px 0;
     }
-    .pill strong{ color: var(--text); font-weight:800; }
+    .pill strong{ color: var(--text); font-weight:900; }
 
     /* GALERIA */
-    .gallery-wrap{ margin-top: 10px; }
     .gallery-grid{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -288,10 +310,7 @@
       transition: transform .25s ease, filter .25s ease;
       filter: saturate(1.03) contrast(1.03);
     }
-    .g-item:hover img{
-      transform: scale(1.06);
-      filter: saturate(1.07) contrast(1.06);
-    }
+    .g-item:hover img{ transform: scale(1.06); filter: saturate(1.08) contrast(1.06); }
     .g-badge{
       position:absolute;
       left:10px; bottom:10px;
@@ -306,8 +325,7 @@
 
     /* Lightbox */
     .lightbox{
-      position:fixed;
-      inset:0;
+      position:fixed; inset:0;
       background: rgba(0,0,0,.82);
       display:none;
       place-items:center;
@@ -324,11 +342,7 @@
       box-shadow: 0 22px 80px rgba(0,0,0,.65);
       position:relative;
     }
-    .lightbox-inner img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
+    .lightbox-inner img{ width:100%; height:auto; display:block; }
     .lb-close{
       position:absolute;
       top:10px; right:10px;
@@ -345,10 +359,10 @@
 
     /* Footer */
     footer{
-      padding: 28px 0 40px;
+      padding: 24px 0 40px;
       color: rgba(201,194,179,.85);
       border-top:1px solid var(--line);
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .footer-grid{
       display:grid;
@@ -357,7 +371,6 @@
     }
     @media (max-width: 920px){ .footer-grid{ grid-template-columns:1fr; } }
     .small{ font-size:12px; line-height:1.5; }
-    .muted{ color: rgba(201,194,179,.85); }
 
     /* Toast */
     .toast{
@@ -394,7 +407,6 @@
     }
     .wa-float:hover{ filter: brightness(1.03); transform: translateY(-1px); }
     .wa-float:active{ transform: translateY(1px); }
-
     .wa-float img{ width:30px; height:30px; display:block; }
 
     .wa-hint{
@@ -416,38 +428,34 @@
 </head>
 
 <body>
-  <!-- Topbar -->
+  <!-- Header -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand" aria-label="Restaurante Tantra">
         <img
           src="tantra-logo-clean-400.webp"
-          srcset="
-            tantra-logo-clean-400.webp 400w,
-            tantra-logo-clean-800.webp 800w,
-            tantra-logo-clean-1200.webp 1200w
-          "
+          srcset="tantra-logo-clean-400.webp 400w, tantra-logo-clean-800.webp 800w, tantra-logo-clean-1200.webp 1200w"
           sizes="(max-width: 520px) 160px, 220px"
           alt="Restaurante Tantra – Mongolian Grill"
         />
       </div>
 
-      <div class="header-right">
-        <nav class="nav" aria-label="Navegação">
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#conteudo">Conteúdo</a>
-          <a href="#galeria">Galeria</a>
-          <a href="#local">Local</a>
-          <a href="#inscricao">Inscrição</a>
-        </nav>
-        <a class="btn btn-primary" href="#inscricao">Reservar vaga</a>
-      </div>
+      <nav class="nav" aria-label="Navegação">
+        <a href="#inscricao">Inscrição</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#local">Local</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#inscricao">Reservar vaga</a>
     </div>
   </div>
 
   <!-- Hero -->
   <header class="hero">
     <div class="container hero-grid">
+
       <div class="panel hero-left">
         <div class="kicker"><span class="dot"></span> Encontro gratuito • 10h–11h30 • Times comerciais</div>
         <h1>Como fazer o cliente <span style="color:var(--gold);">não esquecer</span> da sua empresa</h1>
@@ -458,22 +466,20 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#inscricao">Quero levar meu time</a>
-          <a class="btn" href="#como-funciona">Ver como funciona</a>
+          <a class="btn" href="#conteudo">Ver conteúdo</a>
         </div>
 
-        <div class="bullets" aria-label="Benefícios principais">
+        <div class="bullets">
           <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Retenção</strong><br><span>Menos cliente “one-shot” e mais recorrência.</span></div></div>
           <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Indicação</strong><br><span>Experiência memorável vira conversa e recomendação.</span></div></div>
           <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Valor percebido</strong><br><span>Menos disputa por preço, mais preferência.</span></div></div>
           <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Aplicável</strong><br><span>Ideias práticas para o dia a dia do vendedor.</span></div></div>
         </div>
 
-        <p class="fineprint">
-          * Vagas limitadas por data para manter a experiência focada (times pequenos funcionam melhor).
-        </p>
+        <p class="fineprint">* Vagas limitadas por data para manter a experiência focada (times pequenos funcionam melhor).</p>
       </div>
 
-      <!-- Form -->
+      <!-- Form (logo no início do site) -->
       <div class="panel hero-right" id="inscricao">
         <p class="form-title">Inscreva sua empresa (gratuito)</p>
         <p class="form-sub">Preencha abaixo para reservar a vaga do seu time. Você recebe confirmação por WhatsApp.</p>
@@ -539,18 +545,15 @@
             <textarea id="observacoes" name="observacoes" placeholder="Ex.: queremos focar em retenção, indicação, pós-venda, etc."></textarea>
           </div>
 
-          <input type="hidden" id="utm_source" name="utm_source" value="">
-          <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
           <input type="hidden" id="page_url" name="page_url" value="">
           <input type="hidden" name="_subject" value="Nova inscrição - Palestra Tantra (Time de Vendas)">
 
           <button class="btn btn-primary" type="submit">Enviar inscrição</button>
 
-          <p class="fineprint">
-            Ao enviar, sua empresa entra na lista de confirmação. O Eric confirma os detalhes por WhatsApp.
-          </p>
+          <p class="fineprint">Ao enviar, sua empresa entra na lista de confirmação. O Eric confirma os detalhes por WhatsApp.</p>
         </form>
       </div>
+
     </div>
   </header>
 
@@ -558,7 +561,6 @@
   <section id="como-funciona">
     <div class="container">
       <h2 class="section-title">Como funciona</h2>
-
       <div class="grid3">
         <div class="card">
           <h3>1) Você inscreve sua empresa</h3>
@@ -576,141 +578,48 @@
     </div>
   </section>
 
-  <!-- Conteúdo + Agenda -->
+  <!-- Conteúdo -->
   <section id="conteudo">
     <div class="container schedule">
       <div class="card">
         <h2 class="section-title">O que seu time vai levar</h2>
-
         <div class="pill"><strong>Experiência</strong> que vira lembrança</div>
         <div class="pill"><strong>Percepção de valor</strong> sem desconto</div>
         <div class="pill"><strong>Fidelização</strong> e retorno</div>
         <div class="pill"><strong>Indicação</strong> e boca a boca</div>
-
-        <p class="muted" style="margin-top:10px;">
-          A lógica é simples: o cliente pode esquecer a proposta, mas raramente esquece
-          como você fez ele se sentir. A palestra mostra como desenhar isso na prática.
+        <p style="margin-top:10px; color:var(--muted);">
+          O cliente pode esquecer a proposta, mas raramente esquece como você fez ele se sentir.
+          A palestra mostra como desenhar isso na prática.
         </p>
       </div>
 
       <div class="card">
         <h2 class="section-title">Agenda do encontro</h2>
-        <p class="muted" style="margin:0 0 10px;">Formato pensado para times comerciais (dinâmico e direto).</p>
-
+        <p style="margin:0 0 10px; color:var(--muted);">Formato pensado para times comerciais (dinâmico e direto).</p>
         <div class="pill"><strong>10:00</strong> • Abertura e contexto</div>
         <div class="pill"><strong>10:15</strong> • Método: “inesquecível por design”</div>
         <div class="pill"><strong>10:45</strong> • Exemplos aplicáveis para vendas</div>
         <div class="pill"><strong>11:10</strong> • Perguntas e próximos passos</div>
-
         <p class="fineprint">* Duração total: 1h30. Sem venda no meio. Só conteúdo e prática.</p>
       </div>
     </div>
   </section>
 
-  <!-- GALERIA -->
+  <!-- Galeria -->
   <section id="galeria">
     <div class="container">
       <h2 class="section-title">Galeria • O clima do Tantra</h2>
-      <p class="muted" style="margin:0 0 12px;">Clique nas fotos para ampliar.</p>
+      <p style="margin:0 0 12px; color:var(--muted);">Clique nas fotos para ampliar.</p>
 
-      <div class="gallery-wrap">
-        <div class="gallery-grid" id="galleryGrid">
-          <!-- 1 -->
-          <div class="g-item" data-full="tantra-gallery-1-1600.webp">
-            <img
-              src="tantra-gallery-1-450.webp"
-              srcset="tantra-gallery-1-450.webp 450w, tantra-gallery-1-900.webp 900w, tantra-gallery-1-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - ambiente"
-              loading="lazy"
-            />
-            <div class="g-badge">Ambiente</div>
-          </div>
-
-          <!-- 2 -->
-          <div class="g-item" data-full="tantra-gallery-2-1600.webp">
-            <img
-              src="tantra-gallery-2-450.webp"
-              srcset="tantra-gallery-2-450.webp 450w, tantra-gallery-2-900.webp 900w, tantra-gallery-2-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - chapa"
-              loading="lazy"
-            />
-            <div class="g-badge">Chapa</div>
-          </div>
-
-          <!-- 3 -->
-          <div class="g-item" data-full="tantra-gallery-3-1600.webp">
-            <img
-              src="tantra-gallery-3-450.webp"
-              srcset="tantra-gallery-3-450.webp 450w, tantra-gallery-3-900.webp 900w, tantra-gallery-3-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - jardim"
-              loading="lazy"
-            />
-            <div class="g-badge">Jardim</div>
-          </div>
-
-          <!-- 4 -->
-          <div class="g-item" data-full="tantra-gallery-4-1600.webp">
-            <img
-              src="tantra-gallery-4-450.webp"
-              srcset="tantra-gallery-4-450.webp 450w, tantra-gallery-4-900.webp 900w, tantra-gallery-4-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - prato"
-              loading="lazy"
-            />
-            <div class="g-badge">Prato</div>
-          </div>
-
-          <!-- 5 -->
-          <div class="g-item" data-full="tantra-gallery-5-1600.webp">
-            <img
-              src="tantra-gallery-5-450.webp"
-              srcset="tantra-gallery-5-450.webp 450w, tantra-gallery-5-900.webp 900w, tantra-gallery-5-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - salão"
-              loading="lazy"
-            />
-            <div class="g-badge">Salão</div>
-          </div>
-
-          <!-- 6 -->
-          <div class="g-item" data-full="tantra-gallery-6-1600.webp">
-            <img
-              src="tantra-gallery-6-450.webp"
-              srcset="tantra-gallery-6-450.webp 450w, tantra-gallery-6-900.webp 900w, tantra-gallery-6-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - buffet"
-              loading="lazy"
-            />
-            <div class="g-badge">Buffet</div>
-          </div>
-
-          <!-- 7 -->
-          <div class="g-item" data-full="tantra-gallery-7-1600.webp">
-            <img
-              src="tantra-gallery-7-450.webp"
-              srcset="tantra-gallery-7-450.webp 450w, tantra-gallery-7-900.webp 900w, tantra-gallery-7-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - bar"
-              loading="lazy"
-            />
-            <div class="g-badge">Bar</div>
-          </div>
-
-          <!-- 8 -->
-          <div class="g-item" data-full="tantra-gallery-8-1600.webp">
-            <img
-              src="tantra-gallery-8-450.webp"
-              srcset="tantra-gallery-8-450.webp 450w, tantra-gallery-8-900.webp 900w, tantra-gallery-8-1600.webp 1600w"
-              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
-              alt="Tantra - lounge"
-              loading="lazy"
-            />
-            <div class="g-badge">Lounge</div>
-          </div>
-        </div>
+      <div class="gallery-grid">
+        <div class="g-item" data-full="tantra-gallery-1-1600.webp"><img src="tantra-gallery-1-450.webp" srcset="tantra-gallery-1-450.webp 450w, tantra-gallery-1-900.webp 900w, tantra-gallery-1-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - ambiente" loading="lazy"><div class="g-badge">Ambiente</div></div>
+        <div class="g-item" data-full="tantra-gallery-2-1600.webp"><img src="tantra-gallery-2-450.webp" srcset="tantra-gallery-2-450.webp 450w, tantra-gallery-2-900.webp 900w, tantra-gallery-2-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - chapa" loading="lazy"><div class="g-badge">Chapa</div></div>
+        <div class="g-item" data-full="tantra-gallery-3-1600.webp"><img src="tantra-gallery-3-450.webp" srcset="tantra-gallery-3-450.webp 450w, tantra-gallery-3-900.webp 900w, tantra-gallery-3-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - jardim" loading="lazy"><div class="g-badge">Jardim</div></div>
+        <div class="g-item" data-full="tantra-gallery-4-1600.webp"><img src="tantra-gallery-4-450.webp" srcset="tantra-gallery-4-450.webp 450w, tantra-gallery-4-900.webp 900w, tantra-gallery-4-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - prato" loading="lazy"><div class="g-badge">Prato</div></div>
+        <div class="g-item" data-full="tantra-gallery-5-1600.webp"><img src="tantra-gallery-5-450.webp" srcset="tantra-gallery-5-450.webp 450w, tantra-gallery-5-900.webp 900w, tantra-gallery-5-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - salão" loading="lazy"><div class="g-badge">Salão</div></div>
+        <div class="g-item" data-full="tantra-gallery-6-1600.webp"><img src="tantra-gallery-6-450.webp" srcset="tantra-gallery-6-450.webp 450w, tantra-gallery-6-900.webp 900w, tantra-gallery-6-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - buffet" loading="lazy"><div class="g-badge">Buffet</div></div>
+        <div class="g-item" data-full="tantra-gallery-7-1600.webp"><img src="tantra-gallery-7-450.webp" srcset="tantra-gallery-7-450.webp 450w, tantra-gallery-7-900.webp 900w, tantra-gallery-7-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - bar" loading="lazy"><div class="g-badge">Bar</div></div>
+        <div class="g-item" data-full="tantra-gallery-8-1600.webp"><img src="tantra-gallery-8-450.webp" srcset="tantra-gallery-8-450.webp 450w, tantra-gallery-8-900.webp 900w, tantra-gallery-8-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - lounge" loading="lazy"><div class="g-badge">Lounge</div></div>
       </div>
     </div>
   </section>
@@ -720,20 +629,19 @@
     <div class="container schedule">
       <div class="card">
         <h2 class="section-title">Local</h2>
-        <p class="muted" style="margin:0 0 10px;">
+        <p style="margin:0 0 10px; color:var(--muted);">
           <strong>Tantra Restaurante</strong><br>
           Vila Olímpia • São Paulo
         </p>
-
         <p class="fineprint">* Após a inscrição, a confirmação e detalhes chegam pelo WhatsApp.</p>
       </div>
 
       <div class="card">
         <h2 class="section-title">Perguntas rápidas</h2>
-        <p class="muted"><strong>Quanto custa?</strong> É gratuito.</p>
-        <p class="muted"><strong>Precisa levar quantas pessoas?</strong> Recomendado de 5 a 15 (mas pode variar).</p>
-        <p class="muted"><strong>Tem apresentação comercial?</strong> Não. O foco é conteúdo e experiência.</p>
-        <p class="muted"><strong>Como escolho a data?</strong> Você sinaliza no formulário e confirmamos por WhatsApp.</p>
+        <p style="color:var(--muted); margin:0 0 6px;"><strong>Quanto custa?</strong> É gratuito.</p>
+        <p style="color:var(--muted); margin:0 0 6px;"><strong>Quantas pessoas?</strong> Recomendado de 5 a 15 (pode variar).</p>
+        <p style="color:var(--muted); margin:0 0 6px;"><strong>Tem apresentação comercial?</strong> Não. O foco é conteúdo e experiência.</p>
+        <p style="color:var(--muted); margin:0;"><strong>Como escolho a data?</strong> Você sinaliza no formulário e confirmamos por WhatsApp.</p>
       </div>
     </div>
   </section>
@@ -743,21 +651,14 @@
       <div>
         <img
           src="tantra-logo-transparent-400.webp"
-          srcset="
-            tantra-logo-transparent-400.webp 400w,
-            tantra-logo-transparent-800.webp 800w,
-            tantra-logo-transparent-1200.webp 1200w
-          "
+          srcset="tantra-logo-transparent-400.webp 400w, tantra-logo-transparent-800.webp 800w, tantra-logo-transparent-1200.webp 1200w"
           sizes="160px"
           alt="Tantra Restaurante"
           style="height:40px; width:auto; opacity:.95; margin-bottom:8px;"
         />
-
-        <div class="small muted">
-          © <span id="year"></span> • Página de inscrição (palestra gratuita)
-        </div>
+        <div class="small">© <span id="year"></span> • Página de inscrição (palestra gratuita)</div>
       </div>
-      <div class="small muted">
+      <div class="small">
         Dúvidas? Clique no WhatsApp e fale direto com o Eric.
         <br><br>
         <a class="btn" href="#inscricao">Voltar para inscrição</a>
@@ -775,7 +676,7 @@
     </div>
   </div>
 
-  <!-- WhatsApp floating button -->
+  <!-- Whats -->
   <div class="wa-hint">Fale com o Eric no WhatsApp</div>
   <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Eric">
     <img src="whatsapp-icon-64.png" alt="WhatsApp" />
@@ -783,10 +684,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("utm_source").value = params.get("utm_source") || "";
-    document.getElementById("utm_campaign").value = params.get("utm_campaign") || "";
     document.getElementById("page_url").value = window.location.href;
 
     // Smooth scroll
