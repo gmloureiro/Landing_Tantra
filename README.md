@@ -22,8 +22,7 @@
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 18px;
       --radius2: 26px;
-
-      --wa: #25D366; /* WhatsApp green */
+      --wa: #25D366;
     }
 
     *{ box-sizing:border-box; }
@@ -51,39 +50,27 @@
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:12px 0; /* menor e mais limpo */
+      padding:12px 0;
       gap:16px;
     }
-
-    /* HEADER FIX: logo maior + alinhamento perfeito */
     .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
+      display:flex; align-items:center;
       min-width: 220px;
     }
     .brand img{
       display:block;
-      height:52px; /* maior que antes */
+      height:52px;
       width:auto;
     }
-
-    .header-right{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
+    .header-right{ display:flex; align-items:center; gap:14px; }
 
     .nav{
-      display:flex;
-      gap:16px;
-      align-items:center;
+      display:flex; gap:16px; align-items:center;
       color:var(--muted);
       font-size:15px;
     }
     .nav a{
-      padding:8px 10px;
-      border-radius:999px;
+      padding:8px 10px; border-radius:999px;
       border:1px solid transparent;
     }
     .nav a:hover{
@@ -92,7 +79,6 @@
       color: var(--text);
     }
 
-    /* Mobile: esconde menu e mantém CTA */
     @media (max-width: 760px){
       .brand{ min-width: unset; }
       .brand img{ height:46px; }
@@ -123,12 +109,8 @@
       color: #1a1308;
       box-shadow: 0 18px 45px rgba(216,179,106,.18);
     }
-    .btn-primary:hover{
-      filter: brightness(1.02);
-      border-color: rgba(216,179,106,.75);
-    }
 
-    /* Hero */
+    /* Layout blocks */
     .hero{ padding:56px 0 28px; }
     .hero-grid{
       display:grid;
@@ -203,7 +185,7 @@
       font-weight:900;
     }
 
-    /* Right card (form) */
+    /* Form */
     .hero-right{ padding:22px; }
     .form-title{ font-weight:800; font-size:18px; margin:0 0 6px; }
     .form-sub{ margin:0 0 14px; color:var(--muted); font-size:14px; }
@@ -240,6 +222,7 @@
       font-size: 20px;
       letter-spacing:-.01em;
     }
+
     .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -257,7 +240,6 @@
     .card h3{ margin:0 0 8px; font-size:16px; }
     .card p{ margin:0; color:var(--muted); font-size:14px; }
 
-    /* Schedule block */
     .schedule{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -276,6 +258,90 @@
       margin: 0 8px 8px 0;
     }
     .pill strong{ color: var(--text); font-weight:800; }
+
+    /* GALERIA */
+    .gallery-wrap{ margin-top: 10px; }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .gallery-grid{ grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 440px){ .gallery-grid{ grid-template-columns: 1fr; } }
+
+    .g-item{
+      position:relative;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(216,179,106,.20);
+      background: rgba(0,0,0,.18);
+      cursor:pointer;
+      min-height: 150px;
+    }
+    .g-item img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform .25s ease, filter .25s ease;
+      filter: saturate(1.03) contrast(1.03);
+    }
+    .g-item:hover img{
+      transform: scale(1.06);
+      filter: saturate(1.07) contrast(1.06);
+    }
+    .g-badge{
+      position:absolute;
+      left:10px; bottom:10px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(10,9,7,.75);
+      font-size:12px;
+      color: rgba(243,239,230,.92);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.82);
+      display:none;
+      place-items:center;
+      z-index: 200;
+      padding: 18px;
+    }
+    .lightbox.open{ display:grid; }
+    .lightbox-inner{
+      width:min(1100px, 94vw);
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(216,179,106,.28);
+      background: rgba(10,9,7,.92);
+      box-shadow: 0 22px 80px rgba(0,0,0,.65);
+      position:relative;
+    }
+    .lightbox-inner img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .lb-close{
+      position:absolute;
+      top:10px; right:10px;
+      width:40px; height:40px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(0,0,0,.35);
+      color: rgba(243,239,230,.95);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-size:18px;
+    }
 
     /* Footer */
     footer{
@@ -310,7 +376,7 @@
     }
     .toast strong{ color: var(--gold); }
 
-    /* Floating WhatsApp (verde + ícone por imagem) */
+    /* Floating WhatsApp */
     .wa-float{
       position: fixed;
       right: 18px;
@@ -329,11 +395,7 @@
     .wa-float:hover{ filter: brightness(1.03); transform: translateY(-1px); }
     .wa-float:active{ transform: translateY(1px); }
 
-    .wa-float img{
-      width: 30px;
-      height: 30px;
-      display:block;
-    }
+    .wa-float img{ width:30px; height:30px; display:block; }
 
     .wa-hint{
       position: fixed;
@@ -349,9 +411,7 @@
       z-index: 119;
       max-width: 260px;
     }
-    @media (max-width: 420px){
-      .wa-hint{ display:none; }
-    }
+    @media (max-width: 420px){ .wa-hint{ display:none; } }
   </style>
 </head>
 
@@ -360,7 +420,6 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand" aria-label="Restaurante Tantra">
-        <!-- LOGO NO DIRETÓRIO RAIZ -->
         <img
           src="tantra-logo-clean-400.webp"
           srcset="
@@ -377,6 +436,7 @@
         <nav class="nav" aria-label="Navegação">
           <a href="#como-funciona">Como funciona</a>
           <a href="#conteudo">Conteúdo</a>
+          <a href="#galeria">Galeria</a>
           <a href="#local">Local</a>
           <a href="#inscricao">Inscrição</a>
         </nav>
@@ -418,7 +478,6 @@
         <p class="form-title">Inscreva sua empresa (gratuito)</p>
         <p class="form-sub">Preencha abaixo para reservar a vaga do seu time. Você recebe confirmação por WhatsApp.</p>
 
-        <!-- FORMSPREE -->
         <form id="leadForm" action="https://formspree.io/f/mzdvqaen" method="POST">
           <div class="row2">
             <div>
@@ -480,7 +539,6 @@
             <textarea id="observacoes" name="observacoes" placeholder="Ex.: queremos focar em retenção, indicação, pós-venda, etc."></textarea>
           </div>
 
-          <!-- Extras -->
           <input type="hidden" id="utm_source" name="utm_source" value="">
           <input type="hidden" id="utm_campaign" name="utm_campaign" value="">
           <input type="hidden" id="page_url" name="page_url" value="">
@@ -549,6 +607,114 @@
     </div>
   </section>
 
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="container">
+      <h2 class="section-title">Galeria • O clima do Tantra</h2>
+      <p class="muted" style="margin:0 0 12px;">Clique nas fotos para ampliar.</p>
+
+      <div class="gallery-wrap">
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- 1 -->
+          <div class="g-item" data-full="tantra-gallery-1-1600.webp">
+            <img
+              src="tantra-gallery-1-450.webp"
+              srcset="tantra-gallery-1-450.webp 450w, tantra-gallery-1-900.webp 900w, tantra-gallery-1-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - ambiente"
+              loading="lazy"
+            />
+            <div class="g-badge">Ambiente</div>
+          </div>
+
+          <!-- 2 -->
+          <div class="g-item" data-full="tantra-gallery-2-1600.webp">
+            <img
+              src="tantra-gallery-2-450.webp"
+              srcset="tantra-gallery-2-450.webp 450w, tantra-gallery-2-900.webp 900w, tantra-gallery-2-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - chapa"
+              loading="lazy"
+            />
+            <div class="g-badge">Chapa</div>
+          </div>
+
+          <!-- 3 -->
+          <div class="g-item" data-full="tantra-gallery-3-1600.webp">
+            <img
+              src="tantra-gallery-3-450.webp"
+              srcset="tantra-gallery-3-450.webp 450w, tantra-gallery-3-900.webp 900w, tantra-gallery-3-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - jardim"
+              loading="lazy"
+            />
+            <div class="g-badge">Jardim</div>
+          </div>
+
+          <!-- 4 -->
+          <div class="g-item" data-full="tantra-gallery-4-1600.webp">
+            <img
+              src="tantra-gallery-4-450.webp"
+              srcset="tantra-gallery-4-450.webp 450w, tantra-gallery-4-900.webp 900w, tantra-gallery-4-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - prato"
+              loading="lazy"
+            />
+            <div class="g-badge">Prato</div>
+          </div>
+
+          <!-- 5 -->
+          <div class="g-item" data-full="tantra-gallery-5-1600.webp">
+            <img
+              src="tantra-gallery-5-450.webp"
+              srcset="tantra-gallery-5-450.webp 450w, tantra-gallery-5-900.webp 900w, tantra-gallery-5-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - salão"
+              loading="lazy"
+            />
+            <div class="g-badge">Salão</div>
+          </div>
+
+          <!-- 6 -->
+          <div class="g-item" data-full="tantra-gallery-6-1600.webp">
+            <img
+              src="tantra-gallery-6-450.webp"
+              srcset="tantra-gallery-6-450.webp 450w, tantra-gallery-6-900.webp 900w, tantra-gallery-6-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - buffet"
+              loading="lazy"
+            />
+            <div class="g-badge">Buffet</div>
+          </div>
+
+          <!-- 7 -->
+          <div class="g-item" data-full="tantra-gallery-7-1600.webp">
+            <img
+              src="tantra-gallery-7-450.webp"
+              srcset="tantra-gallery-7-450.webp 450w, tantra-gallery-7-900.webp 900w, tantra-gallery-7-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - bar"
+              loading="lazy"
+            />
+            <div class="g-badge">Bar</div>
+          </div>
+
+          <!-- 8 -->
+          <div class="g-item" data-full="tantra-gallery-8-1600.webp">
+            <img
+              src="tantra-gallery-8-450.webp"
+              srcset="tantra-gallery-8-450.webp 450w, tantra-gallery-8-900.webp 900w, tantra-gallery-8-1600.webp 1600w"
+              sizes="(max-width: 700px) 48vw, (max-width: 980px) 32vw, 23vw"
+              alt="Tantra - lounge"
+              loading="lazy"
+            />
+            <div class="g-badge">Lounge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Local -->
   <section id="local">
     <div class="container schedule">
@@ -601,7 +767,15 @@
 
   <div class="toast" id="toast"></div>
 
-  <!-- WhatsApp floating button (Ícone verde por imagem no ROOT) -->
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
+      <img id="lbImg" src="" alt="Foto ampliada">
+    </div>
+  </div>
+
+  <!-- WhatsApp floating button -->
   <div class="wa-hint">Fale com o Eric no WhatsApp</div>
   <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Eric">
     <img src="whatsapp-icon-64.png" alt="WhatsApp" />
@@ -653,6 +827,29 @@
       "Oi Eric! Tudo bem? Acabei de ver a landing da palestra gratuita (10h–11h30) para times de vendas. " +
       "Queria confirmar detalhes e disponibilidade de datas para levar meu time.";
     document.getElementById("waFloat").href = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
+
+    // Lightbox (galeria)
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbClose = document.getElementById("lbClose");
+
+    document.querySelectorAll(".g-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const full = item.getAttribute("data-full");
+        lbImg.src = full;
+        lb.classList.add("open");
+        lb.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    function closeLb(){
+      lb.classList.remove("open");
+      lb.setAttribute("aria-hidden", "true");
+      lbImg.src = "";
+    }
+    lbClose.addEventListener("click", closeLb);
+    lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
   </script>
 </body>
 </html>
