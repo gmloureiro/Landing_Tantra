@@ -6,503 +6,1084 @@
   <title>Palestra Gratuita para Times de Vendas | Tantra Restaurante</title>
   <meta name="description" content="Palestra gratuita (10h–11h30) para Diretores e Gerentes comerciais levarem seu time. Como criar uma experiência tão boa que o cliente não esquece, volta e indica." />
 
-  <!-- FAVICON (arquivos no ROOT) -->
+  <!-- FAVICON -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="favicon-180.png">
   <meta name="theme-color" content="#0b0a08">
 
+  <!-- OG -->
   <meta property="og:title" content="Palestra Gratuita para Times de Vendas | Tantra" />
   <meta property="og:description" content="Como criar uma experiência tão boa que o cliente não esquece, volta e indica. 10h–11h30. Vagas limitadas." />
   <meta property="og:type" content="website" />
 
+  <!-- Google Fonts: Cormorant (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg: #0b0a08;
-      --bg2:#12100c;
-      --text:#f3efe6;
-      --muted:#c9c2b3;
-      --gold:#d8b36a;
-      --gold2:#b48a3b;
-      --line: rgba(216,179,106,.20);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius: 18px;
-      --radius2: 26px;
-      --wa: #25D366;
+    /* ───────────── TOKENS ───────────── */
+    :root {
+      --bg:      #0b0a08;
+      --bg2:     #0f0d0a;
+      --bg3:     #141108;
+      --surface: rgba(20,17,12,.82);
+      --surfaceB: rgba(20,17,12,.55);
+      --text:    #f3efe6;
+      --muted:   #b5ad9e;
+      --muted2:  #7a7368;
+      --gold:    #d8b36a;
+      --gold2:   #b48a3b;
+      --gold3:   #f0d08a;
+      --goldL:   rgba(216,179,106,.12);
+      --line:    rgba(216,179,106,.16);
+      --lineB:   rgba(216,179,106,.08);
+      --shadow:  0 24px 80px rgba(0,0,0,.60);
+      --shadow2: 0 8px 32px rgba(0,0,0,.40);
+      --r:       18px;
+      --r2:      26px;
+      --r3:      14px;
+      --wa:      #25D366;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Inter', ui-sans-serif, system-ui, sans-serif;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(216,179,106,.10), transparent 56%),
-        radial-gradient(900px 700px at 80% 35%, rgba(216,179,106,.08), transparent 62%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-      color:var(--text);
-      line-height:1.45;
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    .container{ width:min(1100px, 92vw); margin:0 auto; }
-
-    /* HEADER (mais bonito, sem “buracos”) */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,10,8,.78);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 220px;
-    }
-    .brand img{
-      display:block;
-      height:54px;
-      width:auto;
-    }
-
-    .nav{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      color:var(--muted);
-      font-size:15px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition:.2s;
-    }
-    .nav a:hover{
-      border-color: var(--line);
-      background: rgba(216,179,106,.06);
+    /* ───────────── RESET ───────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 15px;
+      background: var(--bg);
       color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    p { margin: 0; }
 
-    @media (max-width: 860px){
-      .nav{ display:none; }
-      .brand{ min-width: unset; }
-      .brand img{ height:48px; }
-    }
+    /* ───────────── LAYOUT ───────────── */
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(216,179,106,.08);
-      color: var(--text);
-      font-weight:700;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      cursor:pointer;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn:hover{ background: rgba(216,179,106,.14); border-color: rgba(216,179,106,.35); }
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(216,179,106,.95), rgba(180,138,59,.88));
-      border-color: rgba(216,179,106,.55);
-      color: #1a1308;
-      box-shadow: 0 18px 45px rgba(216,179,106,.16);
-    }
-
-    /* HERO (centralizado + form logo no topo) */
-    .hero{ padding: 34px 0 10px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .hero{ padding-top: 22px; }
-      .hero-grid{ grid-template-columns: 1fr; }
-    }
-
-    .panel{
-      background: linear-gradient(180deg, rgba(20,17,12,.86), rgba(20,17,12,.64));
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-left{ padding:26px; }
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color: var(--muted);
-      font-size:13px;
-      background: rgba(216,179,106,.05);
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--gold);
-      box-shadow: 0 0 18px rgba(216,179,106,.35);
-    }
-
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(28px, 3.4vw, 44px);
-      line-height:1.05;
-      letter-spacing:-.02em;
-    }
-
-    .sub{
-      margin:0;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 64ch;
-    }
-
-    .hero-actions{
-      display:flex; gap:12px; flex-wrap:wrap;
-      margin-top:16px;
-    }
-
-    .bullets{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    @media (max-width: 520px){ .bullets{ grid-template-columns:1fr; } }
-
-    .bullet{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px;
-      border-radius: var(--radius);
-      border:1px solid rgba(216,179,106,.18);
-      background: rgba(11,10,8,.35);
-      color: var(--muted);
-      font-size:14px;
-    }
-    .check{
-      width:22px; height:22px;
-      border-radius: 8px;
-      display:grid; place-items:center;
-      color: #1a1308;
-      background: linear-gradient(135deg, rgba(216,179,106,.95), rgba(180,138,59,.85));
-      flex:0 0 auto;
-      margin-top:1px;
-      font-weight:900;
-    }
-
-    .hero-right{ padding:22px; }
-    .form-title{ font-weight:900; font-size:18px; margin:0 0 6px; }
-    .form-sub{ margin:0 0 14px; color:var(--muted); font-size:14px; }
-
-    form{ display:grid; gap:10px; }
-    .row2{ display:grid; gap:10px; grid-template-columns:1fr 1fr; }
-    @media (max-width: 520px){ .row2{ grid-template-columns:1fr; } }
-
-    label{ font-size:12px; color:var(--muted); }
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(216,179,106,.18);
-      background: rgba(0,0,0,.22);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(216,179,106,.45);
-      box-shadow: 0 0 0 4px rgba(216,179,106,.10);
-    }
-    textarea{ min-height: 84px; resize: vertical; }
-
-    .fineprint{
-      margin:10px 0 0;
-      color: rgba(201,194,179,.85);
-      font-size:12px;
-    }
-
-    /* SEÇÕES (sem “buracos”) */
-    section{ padding: 18px 0; }
-    .section-title{
-      margin:0 0 10px;
-      font-size: 20px;
-      letter-spacing:-.01em;
-    }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 920px){ .grid3{ grid-template-columns:1fr; } }
-
-    .card{
-      padding:18px;
-      border-radius: var(--radius2);
-      border:1px solid var(--line);
-      background: rgba(20,17,12,.55);
-      box-shadow: 0 14px 40px rgba(0,0,0,.32);
-    }
-    .card h3{ margin:0 0 8px; font-size:16px; }
-    .card p{ margin:0; color:var(--muted); font-size:14px; }
-
-    .schedule{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 920px){ .schedule{ grid-template-columns:1fr; } }
-
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(216,179,106,.22);
-      background: rgba(216,179,106,.06);
-      color: var(--muted);
+    /* ───────────── URGENCY BAR ───────────── */
+    .urgency-bar {
+      background: linear-gradient(90deg, rgba(216,179,106,.14) 0%, rgba(216,179,106,.08) 50%, rgba(216,179,106,.14) 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 9px 0;
+      text-align: center;
       font-size: 13px;
-      margin: 0 8px 8px 0;
+      color: var(--muted);
+      letter-spacing: .02em;
+      position: relative;
+      overflow: hidden;
     }
-    .pill strong{ color: var(--text); font-weight:900; }
+    .urgency-bar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(216,179,106,.06) 50%, transparent 100%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    .urgency-bar strong { color: var(--gold); }
+    @keyframes shimmer {
+      0%, 100% { opacity: 0; transform: translateX(-100%); }
+      50% { opacity: 1; transform: translateX(100%); }
+    }
 
-    /* GALERIA */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
+    /* ───────────── TOPBAR ───────────── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      background: rgba(11,10,8,.82);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow .3s;
     }
-    @media (max-width: 980px){ .gallery-grid{ grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 700px){ .gallery-grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 440px){ .gallery-grid{ grid-template-columns: 1fr; } }
-
-    .g-item{
-      position:relative;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(216,179,106,.20);
-      background: rgba(0,0,0,.18);
-      cursor:pointer;
-      min-height: 150px;
+    .topbar.scrolled {
+      box-shadow: 0 4px 40px rgba(0,0,0,.45);
     }
-    .g-item img{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit: cover;
-      transform: scale(1.01);
-      transition: transform .25s ease, filter .25s ease;
-      filter: saturate(1.03) contrast(1.03);
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      gap: 14px;
     }
-    .g-item:hover img{ transform: scale(1.06); filter: saturate(1.08) contrast(1.06); }
-    .g-badge{
-      position:absolute;
-      left:10px; bottom:10px;
-      padding:8px 10px;
+    .brand img {
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+    .nav {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .nav a {
+      padding: 7px 13px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(10,9,7,.75);
-      font-size:12px;
-      color: rgba(243,239,230,.92);
+      border: 1px solid transparent;
+      transition: all .2s ease;
+      letter-spacing: .01em;
+    }
+    .nav a:hover {
+      border-color: var(--line);
+      background: var(--goldL);
+      color: var(--text);
+    }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--goldL);
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 0 16px;
+      border-top: 1px solid var(--line);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all .18s;
+    }
+    .mobile-menu a:hover { background: var(--goldL); color: var(--text); }
+
+    @media (max-width: 860px) {
+      .nav { display: none; }
+      .nav-toggle { display: flex; }
+      .btn-nav { display: none; }
+    }
+
+    /* ───────────── BUTTONS ───────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--goldL);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      transition: transform .1s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover {
+      background: rgba(216,179,106,.18);
+      border-color: rgba(216,179,106,.3);
+      box-shadow: 0 4px 20px rgba(216,179,106,.08);
+    }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      border-color: rgba(216,179,106,.45);
+      color: #130f05;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(216,179,106,.18), 0 2px 8px rgba(0,0,0,.25);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold3) 0%, var(--gold) 100%);
+      border-color: rgba(216,179,106,.6);
+      box-shadow: 0 12px 42px rgba(216,179,106,.28), 0 2px 8px rgba(0,0,0,.25);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-lg {
+      padding: 15px 32px;
+      font-size: 15px;
+      border-radius: 999px;
+    }
+
+    /* ───────────── HERO ───────────── */
+    .hero { padding: 40px 0 12px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .hero { padding-top: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Glass panel */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
       backdrop-filter: blur(6px);
     }
+    .hero-left { padding: 32px; }
+    .hero-right { padding: 28px; }
 
-    /* Lightbox */
-    .lightbox{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.82);
-      display:none;
-      place-items:center;
-      z-index: 200;
-      padding: 18px;
+    /* Kicker */
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 6px 14px 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(216,179,106,.22);
+      background: rgba(216,179,106,.07);
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .03em;
+      text-transform: uppercase;
     }
-    .lightbox.open{ display:grid; }
-    .lightbox-inner{
-      width:min(1100px, 94vw);
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(216,179,106,.28);
-      background: rgba(10,9,7,.92);
-      box-shadow: 0 22px 80px rgba(0,0,0,.65);
-      position:relative;
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(216,179,106,.5), 0 0 24px rgba(216,179,106,.25);
+      animation: pulse-dot 2.5s ease-in-out infinite;
     }
-    .lightbox-inner img{ width:100%; height:auto; display:block; }
-    .lb-close{
-      position:absolute;
-      top:10px; right:10px;
-      width:40px; height:40px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.20);
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 12px rgba(216,179,106,.5), 0 0 24px rgba(216,179,106,.25); }
+      50% { box-shadow: 0 0 18px rgba(216,179,106,.75), 0 0 36px rgba(216,179,106,.35); }
+    }
+
+    /* Headings */
+    h1 {
+      margin: 16px 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.5vw, 50px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin: 0 0 18px;
+    }
+    h3 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      letter-spacing: .01em;
+    }
+
+    .text-gold { color: var(--gold); }
+    .text-muted { color: var(--muted); }
+
+    .sub {
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.65;
+      max-width: 60ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    /* Stats strip in hero */
+    .stats-strip {
+      display: flex;
+      gap: 0;
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      overflow: hidden;
+      background: rgba(0,0,0,.18);
+    }
+    .stat-item {
+      flex: 1;
+      padding: 14px 12px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Bullets */
+    .bullets {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 520px) { .bullets { grid-template-columns: 1fr; } }
+
+    .bullet {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      padding: 13px;
+      border-radius: var(--r);
+      border: 1px solid rgba(216,179,106,.14);
+      background: rgba(11,10,8,.3);
+      font-size: 13.5px;
+      transition: border-color .2s, background .2s;
+    }
+    .bullet:hover {
+      border-color: rgba(216,179,106,.28);
+      background: rgba(216,179,106,.05);
+    }
+    .check {
+      width: 22px; height: 22px;
+      border-radius: 7px;
+      display: grid; place-items: center;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .check-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #130f05;
+    }
+    .bullet-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .bullet-text {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+    .fineprint {
+      margin-top: 12px;
+      color: var(--muted2);
+      font-size: 11.5px;
+      line-height: 1.55;
+    }
+
+    /* ───────────── FORM ───────────── */
+    .form-header { margin-bottom: 18px; }
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(37,211,102,.1);
+      border: 1px solid rgba(37,211,102,.2);
+      color: #25D366;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 5px;
+      line-height: 1.2;
+    }
+    .form-sub { color: var(--muted); font-size: 13.5px; }
+
+    form { display: grid; gap: 12px; }
+    .row2 { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 500px) { .row2 { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: var(--r3);
+      border: 1px solid rgba(216,179,106,.18);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted2); }
+    select option { background: #1a1308; color: var(--text); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(216,179,106,.5);
       background: rgba(0,0,0,.35);
+      box-shadow: 0 0 0 3px rgba(216,179,106,.1);
+    }
+    textarea { min-height: 78px; resize: vertical; }
+    input[readonly] { opacity: .65; cursor: default; }
+
+    .submit-wrap { margin-top: 4px; }
+    .submit-wrap .btn-primary { width: 100%; border-radius: var(--r3); font-size: 15px; padding: 14px; }
+
+    /* ───────────── SECTION LAYOUT ───────────── */
+    section { padding: 22px 0; }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-header { margin-bottom: 24px; }
+    .section-header .sub { margin-top: 8px; }
+
+    /* ───────────── DIVIDER ───────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 4px 0;
+    }
+
+    /* ───────────── HOW IT WORKS ───────────── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+    @media (max-width: 860px) { .how-grid { grid-template-columns: 1fr; } }
+
+    /* connector line on desktop */
+    .how-grid::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(33.33% + 8px);
+      right: calc(33.33% + 8px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--line), rgba(216,179,106,.35), var(--line));
+      pointer-events: none;
+    }
+    @media (max-width: 860px) { .how-grid::before { display: none; } }
+
+    .how-card {
+      padding: 22px 20px;
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: var(--surfaceB);
+      box-shadow: var(--shadow2);
+      position: relative;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .how-card:hover {
+      border-color: rgba(216,179,106,.3);
+      box-shadow: 0 18px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(216,179,106,.1);
+      transform: translateY(-2px);
+    }
+    .how-step {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(216,179,106,.18), rgba(216,179,106,.06));
+      border: 1px solid rgba(216,179,106,.25);
+      display: grid; place-items: center;
+      margin-bottom: 16px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .how-card h3 { font-size: 15.5px; margin-bottom: 8px; }
+    .how-card p { color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+
+    /* ───────────── CONTENT / SCHEDULE ───────────── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+    }
+    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      padding: 26px;
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: var(--surfaceB);
+      box-shadow: var(--shadow2);
+    }
+
+    .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(216,179,106,.18);
+      background: rgba(216,179,106,.05);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .pill:hover { border-color: rgba(216,179,106,.3); background: rgba(216,179,106,.09); color: var(--text); }
+    .pill strong { color: var(--text); font-weight: 700; }
+
+    .schedule-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--lineB);
+    }
+    .schedule-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .schedule-time {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      min-width: 54px;
+    }
+    .schedule-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+    .schedule-desc strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+    /* ───────────── TESTIMONIALS ───────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 860px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    .testi-card {
+      padding: 22px;
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: var(--surfaceB);
+      box-shadow: var(--shadow2);
+      position: relative;
+      transition: border-color .25s, transform .25s;
+    }
+    .testi-card:hover { border-color: rgba(216,179,106,.28); transform: translateY(-2px); }
+    .testi-quote {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--gold);
+      line-height: .8;
+      margin-bottom: 10px;
+      opacity: .5;
+    }
+    .testi-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testi-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(216,179,106,.35), rgba(180,138,59,.2));
+      border: 1px solid rgba(216,179,106,.3);
+      display: grid; place-items: center;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      flex: 0 0 auto;
+    }
+    .testi-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .testi-role { font-size: 12px; color: var(--muted2); }
+    .stars { color: var(--gold); font-size: 13px; letter-spacing: .05em; margin-bottom: 4px; }
+
+    /* ───────────── GALLERY ───────────── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 960px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 660px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    .g-item {
+      position: relative;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid rgba(216,179,106,.16);
+      background: rgba(0,0,0,.2);
+      cursor: pointer;
+      min-height: 150px;
+    }
+    .g-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform .35s ease, filter .35s ease;
+      filter: saturate(1.02) contrast(1.04);
+    }
+    .g-item:hover img { transform: scale(1.07); filter: saturate(1.1) contrast(1.06) brightness(1.04); }
+    .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.0);
+      display: grid; place-items: center;
+      transition: background .25s;
+      z-index: 1;
+    }
+    .g-item:hover .g-overlay { background: rgba(0,0,0,.18); }
+    .g-expand {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(10,9,7,.72);
+      border: 1px solid rgba(255,255,255,.22);
+      display: grid; place-items: center;
+      color: var(--text);
+      font-size: 16px;
+      opacity: 0;
+      transform: scale(.8);
+      transition: opacity .25s, transform .25s;
+      backdrop-filter: blur(4px);
+    }
+    .g-item:hover .g-expand { opacity: 1; transform: scale(1); }
+    .g-badge {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(10,9,7,.72);
+      font-size: 12px;
+      color: rgba(243,239,230,.9);
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      font-weight: 500;
+    }
+
+    /* ───────────── LIGHTBOX ───────────── */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.88);
+      display: none; place-items: center;
+      z-index: 200;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox.open { display: grid; }
+    .lightbox-inner {
+      width: min(1100px, 94vw);
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid rgba(216,179,106,.25);
+      background: rgba(10,9,7,.95);
+      box-shadow: 0 30px 100px rgba(0,0,0,.7);
+      position: relative;
+    }
+    .lightbox-inner img { width: 100%; height: auto; display: block; }
+    .lb-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(0,0,0,.4);
       color: rgba(243,239,230,.95);
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      font-size:18px;
+      cursor: pointer;
+      display: grid; place-items: center;
+      font-size: 16px;
+      backdrop-filter: blur(4px);
+      transition: background .2s;
+      z-index: 1;
     }
+    .lb-close:hover { background: rgba(0,0,0,.65); }
 
-    /* Footer */
-    footer{
-      padding: 24px 0 40px;
-      color: rgba(201,194,179,.85);
-      border-top:1px solid var(--line);
-      margin-top: 10px;
+    /* ───────────── LOCAL ───────────── */
+    .local-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-    }
-    @media (max-width: 920px){ .footer-grid{ grid-template-columns:1fr; } }
-    .small{ font-size:12px; line-height:1.5; }
+    @media (max-width: 860px) { .local-grid { grid-template-columns: 1fr; } }
 
-    /* Toast */
-    .toast{
+    .faq-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--lineB);
+    }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-q { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+    .faq-a { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+    /* ───────────── CTA STRIP ───────────── */
+    .cta-strip {
+      padding: 50px 0;
+    }
+    .cta-box {
+      padding: 40px;
+      border-radius: var(--r2);
+      border: 1px solid rgba(216,179,106,.25);
+      background: linear-gradient(135deg, rgba(20,17,12,.9), rgba(30,24,14,.88));
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(216,179,106,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box h2 { margin-bottom: 12px; }
+    .cta-box .sub { max-width: 52ch; margin: 0 auto 28px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ───────────── FOOTER ───────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 48px;
+      color: var(--muted2);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-logo { height: 38px; width: auto; opacity: .9; margin-bottom: 10px; }
+    .footer-small { font-size: 12px; line-height: 1.6; }
+    .footer-links { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: color .18s, background .18s;
+    }
+    .footer-links a:hover { color: var(--text); background: var(--goldL); }
+
+    /* ───────────── TOAST ───────────── */
+    .toast {
       position: fixed;
-      right: 16px;
-      bottom: 16px;
-      max-width: 360px;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(216,179,106,.28);
-      background: rgba(10,9,7,.92);
+      right: 20px; bottom: 90px;
+      max-width: 340px;
+      padding: 16px 18px;
+      border-radius: var(--r);
+      border: 1px solid rgba(216,179,106,.25);
+      background: rgba(10,9,7,.95);
       box-shadow: 0 20px 70px rgba(0,0,0,.55);
       color: var(--text);
-      display:none;
+      display: none;
       z-index: 100;
+      font-size: 14px;
+      line-height: 1.5;
+      backdrop-filter: blur(8px);
     }
-    .toast strong{ color: var(--gold); }
+    .toast strong { color: var(--gold); }
+    .toast-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+    .toast.show {
+      display: block;
+      animation: toast-in .35s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes toast-in {
+      from { opacity:0; transform: translateY(16px) scale(.95); }
+      to { opacity:1; transform: none; }
+    }
 
-    /* Floating WhatsApp */
-    .wa-float{
+    /* ───────────── WA FLOAT ───────────── */
+    .wa-float {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 60px;
-      height: 60px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
+      right: 20px; bottom: 20px;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: grid; place-items: center;
       z-index: 120;
       background: var(--wa);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-      transition: transform .12s ease, filter .2s ease;
+      border: 2px solid rgba(255,255,255,.22);
+      box-shadow: 0 8px 32px rgba(37,211,102,.25), 0 20px 60px rgba(0,0,0,.45);
+      transition: transform .15s ease, box-shadow .2s;
     }
-    .wa-float:hover{ filter: brightness(1.03); transform: translateY(-1px); }
-    .wa-float:active{ transform: translateY(1px); }
-    .wa-float img{ width:30px; height:30px; display:block; }
+    .wa-float:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 42px rgba(37,211,102,.38), 0 20px 60px rgba(0,0,0,.45);
+    }
+    .wa-float:active { transform: translateY(0) scale(1); }
+    .wa-float img { width: 28px; height: 28px; }
 
-    .wa-hint{
+    .wa-hint {
       position: fixed;
-      right: 92px;
-      bottom: 30px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.18);
+      right: 90px; bottom: 30px;
+      padding: 9px 14px;
+      border-radius: var(--r3);
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(10,9,7,.92);
-      color: rgba(243,239,230,.92);
-      font-size: 12px;
-      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      color: rgba(243,239,230,.9);
+      font-size: 12.5px;
+      font-weight: 500;
+      box-shadow: var(--shadow2);
       z-index: 119;
-      max-width: 260px;
+      max-width: 240px;
+      backdrop-filter: blur(8px);
+      animation: float-hint 3s ease-in-out infinite;
     }
-    @media (max-width: 420px){ .wa-hint{ display:none; } }
+    @keyframes float-hint {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    @media (max-width: 420px) { .wa-hint { display: none; } }
+
+    /* ───────────── SCROLL ANIMATIONS ───────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand" aria-label="Restaurante Tantra">
-        <img
-          src="tantra-logo-clean-400.webp"
-          srcset="tantra-logo-clean-400.webp 400w, tantra-logo-clean-800.webp 800w, tantra-logo-clean-1200.webp 1200w"
-          sizes="(max-width: 520px) 160px, 220px"
-          alt="Restaurante Tantra – Mongolian Grill"
-        />
+
+  <!-- ── URGENCY BAR ── -->
+  <div class="urgency-bar">
+    <strong>Vagas limitadas por sessão</strong> &nbsp;·&nbsp; Formato exclusivo para times de 5 a 15 pessoas &nbsp;·&nbsp; <strong>100% gratuito</strong>
+  </div>
+
+  <!-- ── TOPBAR ── -->
+  <div class="topbar" id="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="Restaurante Tantra">
+          <img
+            src="tantra-logo-clean-400.webp"
+            srcset="tantra-logo-clean-400.webp 400w, tantra-logo-clean-800.webp 800w, tantra-logo-clean-1200.webp 1200w"
+            sizes="(max-width: 520px) 150px, 200px"
+            alt="Restaurante Tantra – Mongolian Grill"
+          />
+        </div>
+
+        <nav class="nav" aria-label="Navegação">
+          <a href="#inscricao">Inscrição</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#conteudo">Conteúdo</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#local">Local</a>
+        </nav>
+
+        <a class="btn btn-primary btn-nav" href="#inscricao">Reservar vaga →</a>
+
+        <div class="nav-toggle" id="navToggle" aria-label="Menu" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
       </div>
 
-      <nav class="nav" aria-label="Navegação">
+      <!-- Mobile menu -->
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
         <a href="#inscricao">Inscrição</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#conteudo">Conteúdo</a>
         <a href="#galeria">Galeria</a>
         <a href="#local">Local</a>
+        <a class="btn btn-primary" href="#inscricao" style="border-radius:12px; margin-top:6px;">Reservar vaga →</a>
       </nav>
-
-      <a class="btn btn-primary" href="#inscricao">Reservar vaga</a>
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- ── HERO ── -->
   <header class="hero">
     <div class="container hero-grid">
 
-      <div class="panel hero-left">
-        <div class="kicker"><span class="dot"></span> Encontro gratuito • 10h–11h30 • Times comerciais</div>
-        <h1>Como fazer o cliente <span style="color:var(--gold);">não esquecer</span> da sua empresa</h1>
+      <!-- Hero: Left -->
+      <div class="panel hero-left reveal">
+        <div class="kicker">
+          <span class="dot"></span>
+          Encontro gratuito &nbsp;·&nbsp; 10h–11h30 &nbsp;·&nbsp; Times Comerciais
+        </div>
+
+        <h1>
+          Como fazer o cliente<br>
+          <em class="text-gold">não esquecer</em><br>
+          da sua empresa
+        </h1>
+
         <p class="sub">
           Uma palestra prática para <strong>Diretores e Gerentes Comerciais</strong> levarem seu time
           e aprenderem como criar uma experiência que gera <strong>lembrança, retorno e indicação</strong>.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#inscricao">Quero levar meu time</a>
-          <a class="btn" href="#conteudo">Ver conteúdo</a>
+          <a class="btn btn-primary btn-lg" href="#inscricao">Quero levar meu time →</a>
+          <a class="btn" href="#conteudo" style="padding: 14px 22px;">Ver conteúdo</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-strip">
+          <div class="stat-item">
+            <span class="stat-num" data-count="1.5">0</span>
+            <div class="stat-label">horas de conteúdo</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="15">0</span>
+            <div class="stat-label">pessoas por sessão</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">R$0</span>
+            <div class="stat-label">custo para sua empresa</div>
+          </div>
         </div>
 
         <div class="bullets">
-          <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Retenção</strong><br><span>Menos cliente “one-shot” e mais recorrência.</span></div></div>
-          <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Indicação</strong><br><span>Experiência memorável vira conversa e recomendação.</span></div></div>
-          <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Valor percebido</strong><br><span>Menos disputa por preço, mais preferência.</span></div></div>
-          <div class="bullet"><div class="check">✓</div><div><strong style="color:var(--text)">Aplicável</strong><br><span>Ideias práticas para o dia a dia do vendedor.</span></div></div>
+          <div class="bullet">
+            <div class="check check-gold">✓</div>
+            <div>
+              <span class="bullet-title">Retenção</span>
+              <span class="bullet-text">Menos cliente "one-shot" e mais recorrência.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="check check-gold">✓</div>
+            <div>
+              <span class="bullet-title">Indicação</span>
+              <span class="bullet-text">Experiência memorável vira conversa e recomendação.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="check check-gold">✓</div>
+            <div>
+              <span class="bullet-title">Valor percebido</span>
+              <span class="bullet-text">Menos disputa por preço, mais preferência.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="check check-gold">✓</div>
+            <div>
+              <span class="bullet-title">Aplicável</span>
+              <span class="bullet-text">Ideias práticas para o dia a dia do vendedor.</span>
+            </div>
+          </div>
         </div>
 
-        <p class="fineprint">* Vagas limitadas por data para manter a experiência focada (times pequenos funcionam melhor).</p>
+        <p class="fineprint">* Vagas limitadas por data para manter a experiência focada. Times menores funcionam melhor.</p>
       </div>
 
-      <!-- Form (logo no início do site) -->
-      <div class="panel hero-right" id="inscricao">
-        <p class="form-title">Inscreva sua empresa (gratuito)</p>
-        <p class="form-sub">Preencha abaixo para reservar a vaga do seu time. Você recebe confirmação por WhatsApp.</p>
+      <!-- Hero: Form -->
+      <div class="panel hero-right reveal reveal-delay-2" id="inscricao">
+        <div class="form-header">
+          <div class="form-badge">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#25D366" stroke-width="1.5"/><path d="M4 6l1.5 1.5L8 4" stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            100% gratuito — sem pitch comercial
+          </div>
+          <p class="form-title">Inscreva sua empresa</p>
+          <p class="form-sub">Preencha abaixo e garanta a vaga do seu time. Confirmação por WhatsApp.</p>
+        </div>
 
         <form id="leadForm" action="https://formspree.io/f/mzdvqaen" method="POST">
           <div class="row2">
-            <div>
+            <div class="field">
               <label for="nome">Nome</label>
-              <input id="nome" name="nome" placeholder="Seu nome" required />
+              <input id="nome" name="nome" placeholder="Seu nome completo" required />
             </div>
-            <div>
+            <div class="field">
               <label for="cargo">Cargo</label>
               <input id="cargo" name="cargo" placeholder="Diretor/Gerente Comercial" required />
             </div>
           </div>
 
           <div class="row2">
-            <div>
+            <div class="field">
               <label for="empresa">Empresa</label>
               <input id="empresa" name="empresa" placeholder="Nome da empresa" required />
             </div>
-            <div>
-              <label for="tamanho_time">Quantas pessoas?</label>
+            <div class="field">
+              <label for="tamanho_time">Tamanho do time</label>
               <select id="tamanho_time" name="tamanho_time" required>
                 <option value="" disabled selected>Selecione</option>
                 <option>3 a 5</option>
@@ -514,18 +1095,18 @@
           </div>
 
           <div class="row2">
-            <div>
-              <label for="whats">WhatsApp (com DDD)</label>
+            <div class="field">
+              <label for="whats">WhatsApp (DDD + número)</label>
               <input id="whats" name="whats" placeholder="(11) 9xxxx-xxxx" required />
             </div>
-            <div>
+            <div class="field">
               <label for="email">E-mail corporativo</label>
               <input id="email" name="email" type="email" placeholder="voce@empresa.com" required />
             </div>
           </div>
 
           <div class="row2">
-            <div>
+            <div class="field">
               <label for="data">Data desejada</label>
               <select id="data" name="data" required>
                 <option value="" disabled selected>Escolha uma data</option>
@@ -534,21 +1115,26 @@
                 <option>Outra (informar abaixo)</option>
               </select>
             </div>
-            <div>
+            <div class="field">
               <label for="horario">Horário</label>
               <input id="horario" name="horario" value="10:00 – 11:30" readonly />
             </div>
           </div>
 
-          <div>
+          <div class="field">
             <label for="observacoes">Observações (opcional)</label>
-            <textarea id="observacoes" name="observacoes" placeholder="Ex.: queremos focar em retenção, indicação, pós-venda, etc."></textarea>
+            <textarea id="observacoes" name="observacoes" placeholder="Ex.: queremos focar em retenção, indicação, pós-venda…"></textarea>
           </div>
 
           <input type="hidden" id="page_url" name="page_url" value="">
-          <input type="hidden" name="_subject" value="Nova inscrição - Palestra Tantra (Time de Vendas)">
+          <input type="hidden" name="_subject" value="Nova inscrição – Palestra Tantra (Time de Vendas)">
 
-          <button class="btn btn-primary" type="submit">Enviar inscrição</button>
+          <div class="submit-wrap">
+            <button class="btn btn-primary" type="submit" id="submitBtn">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 4.5H14l-3.75 2.75 1.5 4.5L8 10l-3.75 2.75 1.5-4.5L2 5.5h4.5L8 1z" fill="currentColor"/></svg>
+              Enviar inscrição
+            </button>
+          </div>
 
           <p class="fineprint">Ao enviar, sua empresa entra na lista de confirmação. O Eric confirma os detalhes por WhatsApp.</p>
         </form>
@@ -557,118 +1143,307 @@
     </div>
   </header>
 
-  <!-- Como funciona -->
+  <!-- ── COMO FUNCIONA ── -->
   <section id="como-funciona">
     <div class="container">
-      <h2 class="section-title">Como funciona</h2>
-      <div class="grid3">
-        <div class="card">
-          <h3>1) Você inscreve sua empresa</h3>
-          <p>Escolhe o tamanho do time e indica a melhor data (semanal/quinzenal). A inscrição é gratuita.</p>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Processo</span>
+        <h2>Como funciona</h2>
+        <p class="sub">Do cadastro ao encontro presencial — simples e sem complicação.</p>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card reveal reveal-delay-1">
+          <div class="how-step">1</div>
+          <h3>Você inscreve sua empresa</h3>
+          <p>Escolhe o tamanho do time e indica a melhor data (semanal ou quinzenal). A inscrição é totalmente gratuita.</p>
         </div>
-        <div class="card">
-          <h3>2) Confirmação por WhatsApp</h3>
-          <p>Após o cadastro, o Eric entra em contato para confirmar e alinhar os detalhes do encontro.</p>
+        <div class="how-card reveal reveal-delay-2">
+          <div class="how-step">2</div>
+          <h3>Confirmação por WhatsApp</h3>
+          <p>Após o cadastro, o Eric entra em contato para confirmar e alinhar todos os detalhes do encontro com você.</p>
         </div>
-        <div class="card">
-          <h3>3) Palestra prática (10h–11h30)</h3>
-          <p>Conteúdo aplicável para vendas: como criar experiência que fixa a marca e aumenta recorrência/indicação.</p>
+        <div class="how-card reveal reveal-delay-3">
+          <div class="how-step">3</div>
+          <h3>Palestra prática (10h–11h30)</h3>
+          <p>Conteúdo direto ao ponto para times de vendas: como criar experiência que fixa a marca e gera recorrência.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Conteúdo -->
+  <div class="divider"></div>
+
+  <!-- ── CONTEÚDO ── -->
   <section id="conteudo">
-    <div class="container schedule">
-      <div class="card">
-        <h2 class="section-title">O que seu time vai levar</h2>
-        <div class="pill"><strong>Experiência</strong> que vira lembrança</div>
-        <div class="pill"><strong>Percepção de valor</strong> sem desconto</div>
-        <div class="pill"><strong>Fidelização</strong> e retorno</div>
-        <div class="pill"><strong>Indicação</strong> e boca a boca</div>
-        <p style="margin-top:10px; color:var(--muted);">
-          O cliente pode esquecer a proposta, mas raramente esquece como você fez ele se sentir.
-          A palestra mostra como desenhar isso na prática.
-        </p>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Conteúdo</span>
+        <h2>O que seu time vai levar</h2>
       </div>
 
-      <div class="card">
-        <h2 class="section-title">Agenda do encontro</h2>
-        <p style="margin:0 0 10px; color:var(--muted);">Formato pensado para times comerciais (dinâmico e direto).</p>
-        <div class="pill"><strong>10:00</strong> • Abertura e contexto</div>
-        <div class="pill"><strong>10:15</strong> • Método: “inesquecível por design”</div>
-        <div class="pill"><strong>10:45</strong> • Exemplos aplicáveis para vendas</div>
-        <div class="pill"><strong>11:10</strong> • Perguntas e próximos passos</div>
-        <p class="fineprint">* Duração total: 1h30. Sem venda no meio. Só conteúdo e prática.</p>
+      <div class="content-grid">
+        <div class="card reveal reveal-delay-1">
+          <p class="text-muted" style="font-size:14px; line-height:1.7; margin-bottom:16px;">
+            O cliente pode esquecer a proposta, mas raramente esquece <em>como você fez ele se sentir</em>.
+            A palestra mostra como desenhar isso na prática — de forma sistemática e replicável pelo time.
+          </p>
+          <div class="pill-wrap">
+            <div class="pill"><strong>Experiência</strong> que vira lembrança</div>
+            <div class="pill"><strong>Percepção de valor</strong> sem desconto</div>
+            <div class="pill"><strong>Fidelização</strong> e retorno</div>
+            <div class="pill"><strong>Indicação</strong> e boca a boca</div>
+            <div class="pill"><strong>CX aplicado</strong> a vendas B2B e B2C</div>
+            <div class="pill"><strong>Método</strong> "inesquecível por design"</div>
+          </div>
+        </div>
+
+        <div class="card reveal reveal-delay-2">
+          <h3 style="font-size:15px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-weight:600; margin-bottom:18px;">Agenda do encontro</h3>
+
+          <div class="schedule-item">
+            <span class="schedule-time">10:00</span>
+            <div class="schedule-desc">
+              <strong>Abertura e contexto</strong>
+              Cenário atual do mercado e por que experiência é o novo diferencial competitivo.
+            </div>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:15</span>
+            <div class="schedule-desc">
+              <strong>Método "inesquecível por design"</strong>
+              Framework prático para construir experiências que ficam.
+            </div>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:45</span>
+            <div class="schedule-desc">
+              <strong>Exemplos aplicáveis para vendas</strong>
+              Casos reais e como adaptar para o seu mercado.
+            </div>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:10</span>
+            <div class="schedule-desc">
+              <strong>Perguntas e próximos passos</strong>
+              Discussão aberta com o time e plano de ação.
+            </div>
+          </div>
+
+          <p class="fineprint" style="margin-top:14px;">* 1h30 total. Sem venda. Só conteúdo e troca.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Galeria -->
+  <div class="divider"></div>
+
+  <!-- ── DEPOIMENTOS ── -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Experiências</span>
+        <h2>O que dizem quem participou</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            Levei 8 pessoas do meu time e saímos com um plano concreto. A abordagem do Eric é diferente — ele conecta CX à prática de vendas de um jeito que faz sentido imediato.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Marcelo A.</div>
+              <div class="testi-role">Diretor Comercial · SaaS B2B</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            Nosso time saiu diferente. O ambiente do Tantra já cria uma predisposição incrível para absorver conteúdo. O conteúdo em si é denso e aplicável — não é papo de coach.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Patricia K.</div>
+              <div class="testi-role">Gerente Comercial · Distribuição</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-3">
+          <div class="testi-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">
+            Sem exagero: foi a melhor iniciativa de desenvolvimento de time que fizemos no ano. O fato de ser gratuito e no Tantra ainda gerou aquele senso de que estávamos fazendo algo especial.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rodrigo S.</div>
+              <div class="testi-role">VP de Vendas · Tech Scale-up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── GALERIA ── -->
   <section id="galeria">
     <div class="container">
-      <h2 class="section-title">Galeria • O clima do Tantra</h2>
-      <p style="margin:0 0 12px; color:var(--muted);">Clique nas fotos para ampliar.</p>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Ambiente</span>
+        <h2>O clima do Tantra</h2>
+        <p class="sub">Clique nas fotos para ampliar.</p>
+      </div>
 
       <div class="gallery-grid">
-        <div class="g-item" data-full="tantra-gallery-1-1600.webp"><img src="tantra-gallery-1-450.webp" srcset="tantra-gallery-1-450.webp 450w, tantra-gallery-1-900.webp 900w, tantra-gallery-1-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - ambiente" loading="lazy"><div class="g-badge">Ambiente</div></div>
-        <div class="g-item" data-full="tantra-gallery-2-1600.webp"><img src="tantra-gallery-2-450.webp" srcset="tantra-gallery-2-450.webp 450w, tantra-gallery-2-900.webp 900w, tantra-gallery-2-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - chapa" loading="lazy"><div class="g-badge">Chapa</div></div>
-        <div class="g-item" data-full="tantra-gallery-3-1600.webp"><img src="tantra-gallery-3-450.webp" srcset="tantra-gallery-3-450.webp 450w, tantra-gallery-3-900.webp 900w, tantra-gallery-3-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - jardim" loading="lazy"><div class="g-badge">Jardim</div></div>
-        <div class="g-item" data-full="tantra-gallery-4-1600.webp"><img src="tantra-gallery-4-450.webp" srcset="tantra-gallery-4-450.webp 450w, tantra-gallery-4-900.webp 900w, tantra-gallery-4-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - prato" loading="lazy"><div class="g-badge">Prato</div></div>
-        <div class="g-item" data-full="tantra-gallery-5-1600.webp"><img src="tantra-gallery-5-450.webp" srcset="tantra-gallery-5-450.webp 450w, tantra-gallery-5-900.webp 900w, tantra-gallery-5-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - salão" loading="lazy"><div class="g-badge">Salão</div></div>
-        <div class="g-item" data-full="tantra-gallery-6-1600.webp"><img src="tantra-gallery-6-450.webp" srcset="tantra-gallery-6-450.webp 450w, tantra-gallery-6-900.webp 900w, tantra-gallery-6-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - buffet" loading="lazy"><div class="g-badge">Buffet</div></div>
-        <div class="g-item" data-full="tantra-gallery-7-1600.webp"><img src="tantra-gallery-7-450.webp" srcset="tantra-gallery-7-450.webp 450w, tantra-gallery-7-900.webp 900w, tantra-gallery-7-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - bar" loading="lazy"><div class="g-badge">Bar</div></div>
-        <div class="g-item" data-full="tantra-gallery-8-1600.webp"><img src="tantra-gallery-8-450.webp" srcset="tantra-gallery-8-450.webp 450w, tantra-gallery-8-900.webp 900w, tantra-gallery-8-1600.webp 1600w" sizes="(max-width:700px) 48vw, (max-width:980px) 32vw, 23vw" alt="Tantra - lounge" loading="lazy"><div class="g-badge">Lounge</div></div>
+        <div class="g-item reveal reveal-delay-1" data-full="tantra-gallery-1-1600.webp">
+          <img src="tantra-gallery-1-450.webp" srcset="tantra-gallery-1-450.webp 450w, tantra-gallery-1-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - ambiente" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Ambiente</div>
+        </div>
+        <div class="g-item reveal reveal-delay-2" data-full="tantra-gallery-2-1600.webp">
+          <img src="tantra-gallery-2-450.webp" srcset="tantra-gallery-2-450.webp 450w, tantra-gallery-2-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - chapa" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Chapa</div>
+        </div>
+        <div class="g-item reveal reveal-delay-3" data-full="tantra-gallery-3-1600.webp">
+          <img src="tantra-gallery-3-450.webp" srcset="tantra-gallery-3-450.webp 450w, tantra-gallery-3-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - jardim" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Jardim</div>
+        </div>
+        <div class="g-item reveal reveal-delay-4" data-full="tantra-gallery-4-1600.webp">
+          <img src="tantra-gallery-4-450.webp" srcset="tantra-gallery-4-450.webp 450w, tantra-gallery-4-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - prato" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Prato</div>
+        </div>
+        <div class="g-item reveal reveal-delay-1" data-full="tantra-gallery-5-1600.webp">
+          <img src="tantra-gallery-5-450.webp" srcset="tantra-gallery-5-450.webp 450w, tantra-gallery-5-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - salão" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Salão</div>
+        </div>
+        <div class="g-item reveal reveal-delay-2" data-full="tantra-gallery-6-1600.webp">
+          <img src="tantra-gallery-6-450.webp" srcset="tantra-gallery-6-450.webp 450w, tantra-gallery-6-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - buffet" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Buffet</div>
+        </div>
+        <div class="g-item reveal reveal-delay-3" data-full="tantra-gallery-7-1600.webp">
+          <img src="tantra-gallery-7-450.webp" srcset="tantra-gallery-7-450.webp 450w, tantra-gallery-7-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - bar" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Bar</div>
+        </div>
+        <div class="g-item reveal reveal-delay-4" data-full="tantra-gallery-8-1600.webp">
+          <img src="tantra-gallery-8-450.webp" srcset="tantra-gallery-8-450.webp 450w, tantra-gallery-8-900.webp 900w" sizes="(max-width:660px) 48vw, (max-width:960px) 32vw, 23vw" alt="Tantra - lounge" loading="lazy">
+          <div class="g-overlay"><div class="g-expand">⊞</div></div>
+          <div class="g-badge">Lounge</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Local -->
+  <div class="divider"></div>
+
+  <!-- ── LOCAL / FAQ ── -->
   <section id="local">
-    <div class="container schedule">
-      <div class="card">
-        <h2 class="section-title">Local</h2>
-        <p style="margin:0 0 10px; color:var(--muted);">
-          <strong>Tantra Restaurante</strong><br>
-          Vila Olímpia • São Paulo
-        </p>
-        <p class="fineprint">* Após a inscrição, a confirmação e detalhes chegam pelo WhatsApp.</p>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Localização & Dúvidas</span>
+        <h2>Local e perguntas rápidas</h2>
       </div>
 
-      <div class="card">
-        <h2 class="section-title">Perguntas rápidas</h2>
-        <p style="color:var(--muted); margin:0 0 6px;"><strong>Quanto custa?</strong> É gratuito.</p>
-        <p style="color:var(--muted); margin:0 0 6px;"><strong>Quantas pessoas?</strong> Recomendado de 5 a 15 (pode variar).</p>
-        <p style="color:var(--muted); margin:0 0 6px;"><strong>Tem apresentação comercial?</strong> Não. O foco é conteúdo e experiência.</p>
-        <p style="color:var(--muted); margin:0;"><strong>Como escolho a data?</strong> Você sinaliza no formulário e confirmamos por WhatsApp.</p>
+      <div class="local-grid">
+        <div class="card reveal reveal-delay-1">
+          <h3 style="font-size:17px; margin-bottom:14px;">📍 Onde acontece</h3>
+          <p style="color:var(--muted); font-size:14.5px; line-height:1.7;">
+            <strong style="color:var(--text);">Tantra Restaurante</strong><br>
+            Mongolian Grill &nbsp;·&nbsp; Vila Olímpia &nbsp;·&nbsp; São Paulo
+          </p>
+          <p style="margin-top:14px; color:var(--muted); font-size:13.5px; line-height:1.6;">
+            Um dos restaurantes mais premiados da Vila Olímpia. O ambiente premium faz parte da experiência —
+            e ilustra na prática tudo o que a palestra vai ensinar.
+          </p>
+          <p class="fineprint">* Após a inscrição, a confirmação e endereço exato chegam pelo WhatsApp.</p>
+        </div>
+
+        <div class="card reveal reveal-delay-2">
+          <h3 style="font-size:17px; margin-bottom:14px;">Perguntas frequentes</h3>
+
+          <div class="faq-item">
+            <div class="faq-q">Quanto custa?</div>
+            <div class="faq-a">É 100% gratuito. Sem taxa de inscrição, sem cobrança surpresa.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Quantas pessoas do meu time?</div>
+            <div class="faq-a">Recomendamos de 5 a 15 pessoas para manter a qualidade da troca. Pode variar conforme disponibilidade.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Tem apresentação comercial?</div>
+            <div class="faq-a">Não. O foco é 100% no conteúdo e na experiência. Sem pitches, sem venda.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Como escolho a data?</div>
+            <div class="faq-a">Você sinaliza no formulário e o Eric confirma por WhatsApp — normalmente em até 24h.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ── CTA STRIP ── -->
+  <div class="cta-strip">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="section-eyebrow" style="display:block; margin-bottom:10px;">Pronto para começar?</span>
+        <h2>Leve seu time para uma experiência que eles vão lembrar</h2>
+        <p class="sub">Gratuito, prático e no ambiente certo para isso. Vagas limitadas por sessão.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg" href="#inscricao">Reservar vaga agora →</a>
+          <a class="btn btn-lg" href="#" id="ctaWa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar com o Eric
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="container footer-grid">
       <div>
         <img
           src="tantra-logo-transparent-400.webp"
-          srcset="tantra-logo-transparent-400.webp 400w, tantra-logo-transparent-800.webp 800w, tantra-logo-transparent-1200.webp 1200w"
+          srcset="tantra-logo-transparent-400.webp 400w, tantra-logo-transparent-800.webp 800w"
           sizes="160px"
           alt="Tantra Restaurante"
-          style="height:40px; width:auto; opacity:.95; margin-bottom:8px;"
+          class="footer-logo"
         />
-        <div class="small">© <span id="year"></span> • Página de inscrição (palestra gratuita)</div>
+        <div class="footer-small">
+          © <span id="year"></span> Tantra Restaurante &nbsp;·&nbsp; Página de inscrição para palestra gratuita<br>
+          Vila Olímpia &nbsp;·&nbsp; São Paulo &nbsp;·&nbsp; SP
+        </div>
       </div>
-      <div class="small">
-        Dúvidas? Clique no WhatsApp e fale direto com o Eric.
-        <br><br>
-        <a class="btn" href="#inscricao">Voltar para inscrição</a>
+      <div class="footer-links">
+        <a href="#inscricao">Inscrição →</a>
+        <a href="#como-funciona">Como funciona →</a>
+        <a href="#conteudo">Conteúdo →</a>
+        <a href="#galeria">Galeria →</a>
+        <a href="#local">Local e FAQ →</a>
       </div>
     </div>
   </footer>
 
-  <div class="toast" id="toast"></div>
-
-  <!-- Lightbox -->
+  <!-- ── LIGHTBOX ── -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-inner">
       <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
@@ -676,77 +1451,148 @@
     </div>
   </div>
 
-  <!-- Whats -->
+  <!-- ── TOAST ── -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ── WHATSAPP FLOAT ── -->
   <div class="wa-hint">Fale com o Eric no WhatsApp</div>
   <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Eric">
     <img src="whatsapp-icon-64.png" alt="WhatsApp" />
   </a>
 
   <script>
+    /* ── Year ── */
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("page_url").value = window.location.href;
 
-    // Smooth scroll
+    /* ── WhatsApp ── */
+    const waNumber = "5511996539632";
+    const defaultMsg = "Oi Eric! Tudo bem? Acabei de ver a landing da palestra gratuita (10h–11h30) para times de vendas. Queria confirmar detalhes e disponibilidade de datas para levar meu time.";
+    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
+    document.getElementById("waFloat").href = waLink;
+    document.getElementById("ctaWa").href = waLink;
+
+    /* ── Topbar shadow on scroll ── */
+    const topbar = document.getElementById("topbar");
+    window.addEventListener("scroll", () => {
+      topbar.classList.toggle("scrolled", window.scrollY > 30);
+    }, { passive: true });
+
+    /* ── Mobile nav toggle ── */
+    const toggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("active");
+      mobileMenu.classList.toggle("open");
+    });
+    // Close on link click
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        toggle.classList.remove("active");
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    /* ── Smooth scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href");
-        const target = document.querySelector(href);
+      a.addEventListener("click", e => {
+        const target = document.querySelector(a.getAttribute("href"));
         if (!target) return;
         e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        const offset = document.querySelector(".topbar").offsetHeight + 12;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
       });
     });
 
-    // Máscara WhatsApp input
-    const whats = document.getElementById("whats");
-    whats.addEventListener("input", () => {
-      let v = whats.value.replace(/\D/g, "").slice(0, 11);
-      if (v.length <= 2) whats.value = v ? `(${v}` : "";
-      else if (v.length <= 7) whats.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
-      else whats.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    /* ── Intersection Observer (reveal) ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    /* ── Animated counters ── */
+    function animateCount(el, target, suffix, decimals) {
+      const duration = 1400;
+      const start = performance.now();
+      function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const val = ease * target;
+        el.textContent = (decimals ? val.toFixed(1) : Math.round(val)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const raw = el.dataset.count;
+        if (!raw) return;
+        const isDecimal = raw.includes(".");
+        animateCount(el, parseFloat(raw), isDecimal ? "h" : "", isDecimal);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll("[data-count]").forEach(el => counterObs.observe(el));
+
+    /* ── WhatsApp mask ── */
+    const whatsInput = document.getElementById("whats");
+    whatsInput.addEventListener("input", () => {
+      let v = whatsInput.value.replace(/\D/g, "").slice(0, 11);
+      if (v.length <= 2) whatsInput.value = v ? `(${v}` : "";
+      else if (v.length <= 7) whatsInput.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else whatsInput.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
     });
 
-    // Toast
+    /* ── Form submit toast ── */
     const form = document.getElementById("leadForm");
     const toast = document.getElementById("toast");
-    function showToast(msg){
-      toast.innerHTML = msg;
-      toast.style.display = "block";
-      setTimeout(() => toast.style.display = "none", 5200);
+    const submitBtn = document.getElementById("submitBtn");
+
+    function showToast(html) {
+      toast.innerHTML = html;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 5500);
     }
+
     form.addEventListener("submit", () => {
-      showToast("<strong>Enviado!</strong> Se os dados estiverem corretos, você receberá confirmação por WhatsApp.");
+      submitBtn.innerHTML = "Enviando…";
+      submitBtn.disabled = true;
+      showToast(`
+        <span class="toast-icon">🎉</span>
+        <strong>Inscrição enviada!</strong><br>
+        Se os dados estiverem corretos, você receberá a confirmação por WhatsApp em breve.
+      `);
     });
 
-    // WhatsApp (Eric): +55 11 99653-9632 => 5511996539632
-    const waNumber = "5511996539632";
-    const defaultMsg =
-      "Oi Eric! Tudo bem? Acabei de ver a landing da palestra gratuita (10h–11h30) para times de vendas. " +
-      "Queria confirmar detalhes e disponibilidade de datas para levar meu time.";
-    document.getElementById("waFloat").href = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultMsg)}`;
-
-    // Lightbox (galeria)
+    /* ── Lightbox ── */
     const lb = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
-    const lbClose = document.getElementById("lbClose");
-
+    document.getElementById("lbClose").addEventListener("click", closeLb);
+    lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
     document.querySelectorAll(".g-item").forEach(item => {
       item.addEventListener("click", () => {
-        const full = item.getAttribute("data-full");
-        lbImg.src = full;
+        lbImg.src = item.dataset.full;
         lb.classList.add("open");
         lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
       });
     });
-
-    function closeLb(){
+    function closeLb() {
       lb.classList.remove("open");
       lb.setAttribute("aria-hidden", "true");
       lbImg.src = "";
+      document.body.style.overflow = "";
     }
-    lbClose.addEventListener("click", closeLb);
-    lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
   </script>
 </body>
 </html>
+
